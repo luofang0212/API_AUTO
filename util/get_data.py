@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from util.HttpRequest import HttpRequest
+from util.http_requests import HttpRequest
 
 class GetData:
     login_url = 'https://api.xdclass.net/pub/api/v1/web/web_login'

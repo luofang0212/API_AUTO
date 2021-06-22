@@ -4,7 +4,7 @@
 import unittest
 from ddt import ddt, data
 
-from util.HttpRequest import HttpRequest
+from util.http_requests import HttpRequest
 from util.do_excel import DoExcel
 from util.get_data import GetData
 from util import get_path
