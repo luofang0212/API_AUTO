@@ -7,7 +7,9 @@ from util.read_config import ReadConfig
 from util import get_path
 from util.get_data import GetData
 import os
+from util.do_logs import TestLog
 
+log = TestLog().getlog()
 # 读取excel测试数据
 class DoExcel:
 
@@ -20,7 +22,8 @@ class DoExcel:
         url_path = ReadConfig().get_config(get_path.read_config_path, 'ADDRESS', 'url')
         phone = getattr(GetData, 'PHONE')
 
-        print(mode)
+        log.info("获取到结果：mode: {0},url_path: {1},phone: {2}".format(mode,url_path,phone))
+
         test_data = []
         for key in mode:
             sheet = wb[key]
@@ -63,6 +66,7 @@ class DoExcel:
                     sub_data['sheet_name'] = key
 
                     test_data.append(sub_data)
+                    log.info("获取到结的test_data：{0}".format(test_data))
 
         return test_data
 

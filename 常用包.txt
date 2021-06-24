@@ -3,6 +3,7 @@
 import random  #随机数
 import os   #路径和文件处理
 import configparser  #读取配置文件信息
+import logging  #日志模块
 
 
 # 第三方库
