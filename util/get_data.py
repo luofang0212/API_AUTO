@@ -8,6 +8,7 @@ class GetData:
     login_data = {'phone': '17267723687', 'pwd': 'love920212'}
     res_1 = HttpRequest().http_request('post', login_url, login_data)
     USER_TOKEN = res_1.json()['data']['token']
+
     PHONE=13011110001
 
 

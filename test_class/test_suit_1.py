@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-from test_data.test_http import TestLogin
+from util.test_http import TestLogin
 from util.HTMLTestReportCN import HTMLTestRunner
 from util import get_path
 

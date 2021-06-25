@@ -11,6 +11,7 @@ from util.do_logs import TestLog
 
 log = TestLog().getlog()
 
+
 # 读取excel测试数据
 class DoExcel:
 
@@ -21,11 +22,12 @@ class DoExcel:
         # 从配置文件读取mode的值
         mode = eval(ReadConfig().get_config(get_path.read_config_path, 'MODE', 'mode'))
         url_path = ReadConfig().get_config(get_path.read_config_path, 'ADDRESS', 'url')
+        tel = getattr(GetData, 'PHONE')
 
-        log.info("获取到结果：mode: {0},url_path: {1}".format(mode, url_path))
+        log.info("获取到结果：mode: {0},url_path: {1},tel: {2}".format(mode, url_path, tel))
 
         test_data = []
-
+        finall_data = []
         for key in mode:
 
             sheet = wb[key]
@@ -38,7 +40,13 @@ class DoExcel:
                     sub_data['method'] = sheet.cell(item, 3).value
                     sub_data['headers'] = sheet.cell(item, 4).value
                     sub_data['url'] = url_path + sheet.cell(item, 5).value
+                    # if sheet.cell(item, 6).value.find('${tel}') != -1:
+                    #     phone = phone + 1
+                    #     setattr(GetData, 'PHONE', phone)
+                    #     sub_data['data'] = sheet.cell(item, 6).value.replace("${tel}", str(phone))
+                    # else:
                     sub_data['data'] = sheet.cell(item, 6).value
+
                     sub_data['excepted'] = sheet.cell(item, 7).value
                     sub_data['sheet_name'] = key
 
@@ -51,7 +59,13 @@ class DoExcel:
                     sub_data['method'] = sheet.cell(case_id + 1, 3).value
                     sub_data['headers'] = sheet.cell(case_id + 1, 4).value
                     sub_data['url'] = url_path + sheet.cell(case_id + 1, 5).value
+                    # if sheet.cell(item, 6).value.find('${tel}') != -1:
+                    #     phone = phone + 1
+                    #     setattr(GetData, 'PHONE', phone)
+                    #     sub_data['data'] = sheet.cell(case_id + 1, 6).value.replace("${tel}", str(phone))
+                    # else:
                     sub_data['data'] = sheet.cell(case_id + 1, 6).value
+
                     sub_data['excepted'] = sheet.cell(case_id + 1, 7).value
                     sub_data['sheet_name'] = key
 
@@ -72,3 +86,6 @@ class DoExcel:
 if __name__ == '__main__':
     res = DoExcel().get_data(get_path.test_excel_path)
     print(res)
+    tel = getattr(GetData, 'PHONE')
+    a = {'phone': '{0}'.format(tel), 'pwd': 'love9202112'}
+    print(a)
