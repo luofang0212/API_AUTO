@@ -4,6 +4,7 @@ import random  #随机数
 import os   #路径和文件处理
 import configparser  #读取配置文件信息
 import logging  #日志模块
+import time  # 时间
 
 
 # 第三方库
@@ -16,3 +17,9 @@ from ddt import ddt, data, unpack, file_data  #ddt 数据驱动管理 一般结�
 import xlrd  #处理Excel的xlrd模块
 import pandas  #高效处理数据 excel,主要用来做数据分析的
 
+# 邮件模块
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.mime.image import MIMEImage
+from email.mime.application import MIMEApplication
